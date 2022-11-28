@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  * Please follow the code rules : PSR-2
  */
-use Tusimo\Query\Query;
+use Tusimo\Restable\Query;
 
 function query()
 {

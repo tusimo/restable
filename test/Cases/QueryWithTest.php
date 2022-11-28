@@ -8,7 +8,7 @@ declare(strict_types=1);
  */
 namespace Tusimo\Test\Cases;
 
-use Tusimo\Query\QueryWith;
+use Tusimo\Restable\QueryWith;
 use PHPUnit\Framework\TestCase;
 
 /**

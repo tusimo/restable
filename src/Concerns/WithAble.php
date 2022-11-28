@@ -6,9 +6,9 @@ declare(strict_types=1);
  *
  * Please follow the code rules : PSR-2
  */
-namespace Tusimo\Query\Concerns;
+namespace Tusimo\Restable\Concerns;
 
-use Tusimo\Query\QueryWith;
+use Tusimo\Restable\QueryWith;
 
 trait WithAble
 {

@@ -27,7 +27,7 @@
       "src/helpers.php"
     ],
     "psr-4": {
-      "Tusimo\\Query\\": "src/"
+      "Tusimo\\Restable\\": "src/"
     }
   },
   "autoload-dev": {

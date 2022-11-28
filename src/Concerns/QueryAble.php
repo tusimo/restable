@@ -6,9 +6,9 @@ declare(strict_types=1);
  *
  * Please follow the code rules : PSR-2
  */
-namespace Tusimo\Query\Concerns;
+namespace Tusimo\Restable\Concerns;
 
-use Tusimo\Query\QueryItem;
+use Tusimo\Restable\QueryItem;
 
 trait QueryAble
 {
@@ -51,6 +51,7 @@ trait QueryAble
 
     /**
      * @param mixed $value
+     * @param mixed $operation
      * @return $this
      */
     public function where(string $key, $operation, $value = null)

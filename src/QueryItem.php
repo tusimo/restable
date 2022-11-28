@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  * Please follow the code rules : PSR-2
  */
-namespace Tusimo\Query;
+namespace Tusimo\Restable;
 
 class QueryItem
 {

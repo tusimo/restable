@@ -6,18 +6,18 @@ declare(strict_types=1);
  *
  * Please follow the code rules : PSR-2
  */
-namespace Tusimo\Query;
+namespace Tusimo\Restable;
 
-use Tusimo\Query\Concerns\UriAble;
-use Tusimo\Query\Concerns\PageAble;
-use Tusimo\Query\Concerns\SeekAble;
-use Tusimo\Query\Concerns\WithAble;
-use Tusimo\Query\Concerns\OrderAble;
-use Tusimo\Query\Concerns\QueryAble;
-use Tusimo\Query\Concerns\SelectAble;
-use Tusimo\Query\Concerns\AggregateAble;
-use Tusimo\Query\Concerns\ParameterAble;
-use Tusimo\Query\Concerns\SubResourceAble;
+use Tusimo\Restable\Concerns\UriAble;
+use Tusimo\Restable\Concerns\PageAble;
+use Tusimo\Restable\Concerns\SeekAble;
+use Tusimo\Restable\Concerns\WithAble;
+use Tusimo\Restable\Concerns\OrderAble;
+use Tusimo\Restable\Concerns\QueryAble;
+use Tusimo\Restable\Concerns\SelectAble;
+use Tusimo\Restable\Concerns\AggregateAble;
+use Tusimo\Restable\Concerns\ParameterAble;
+use Tusimo\Restable\Concerns\SubResourceAble;
 
 class Query
 {

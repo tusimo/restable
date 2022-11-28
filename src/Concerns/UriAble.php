@@ -6,14 +6,14 @@ declare(strict_types=1);
  *
  * Please follow the code rules : PSR-2
  */
-namespace Tusimo\Query\Concerns;
+namespace Tusimo\Restable\Concerns;
 
-use Tusimo\Query\Query;
-use Tusimo\Query\QueryItem;
-use Tusimo\Query\QuerySeek;
-use Tusimo\Query\QueryOrderBy;
-use Tusimo\Query\QueryAggregate;
-use Tusimo\Query\QueryPagination;
+use Tusimo\Restable\Query;
+use Tusimo\Restable\QueryItem;
+use Tusimo\Restable\QuerySeek;
+use Tusimo\Restable\QueryOrderBy;
+use Tusimo\Restable\QueryAggregate;
+use Tusimo\Restable\QueryPagination;
 
 trait UriAble
 {
