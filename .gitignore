@@ -1,0 +1,8 @@
+vendor
+.idea
+.vscode
+composer.lock
+.php-cs-fixer.cache
+tests/test.php
+.phpunit.result.cache
+.git
