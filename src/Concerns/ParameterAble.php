@@ -68,4 +68,14 @@ trait ParameterAble
     {
         return $this->parameters;
     }
+
+    /**
+     * Add Parameters.
+     *
+     * @return static
+     */
+    public function parameter(string $key, string $parameter)
+    {
+        return $this->withParameter($key, $parameter);
+    }
 }

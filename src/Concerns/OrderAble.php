@@ -51,29 +51,29 @@ trait OrderAble
     /**
      * @return static
      */
-    public function orderBy(string $key, string $direction = 'desc')
+    public function orderBy(string $orderBy, string $order = 'desc')
     {
-        $this->setQueryOrderBy(new QueryOrderBy($key, $direction));
+        $queryOrderBy = new QueryOrderBy();
+        $queryOrderBy->setOrder($order)->setOrderBy($orderBy);
+        $this->setQueryOrderBy($queryOrderBy);
         return $this;
     }
 
     /**
-     * @param string $direction
      * @return $this
      */
-    public function orderByDesc(string $key)
+    public function orderByDesc(string $orderBy)
     {
-        $this->orderBy($key, 'desc');
+        $this->orderBy($orderBy, 'desc');
         return $this;
     }
 
     /**
-     * @param string $direction
      * @return $this
      */
-    public function orderByAsc(string $key)
+    public function orderByAsc(string $orderBy)
     {
-        $this->orderBy($key, 'asc');
+        $this->orderBy($orderBy, 'asc');
         return $this;
     }
 

@@ -24,30 +24,14 @@ class QueryOrderBy
      */
     protected $order;
 
-    public function __construct(string $orderBy = 'id', string $order = 'desc')
-    {
-        $this->orderBy = $orderBy;
-        $this->order = $order;
-    }
-
-    /**
-     * Check if has order or not.
-     *
-     * @return bool
-     */
-    public function hasOrder()
-    {
-        return ! is_null($this->order);
-    }
-
-    /**
-     * Check if has order or not.
-     *
-     * @return bool
-     */
     public function hasOrderBy()
     {
         return ! is_null($this->orderBy);
+    }
+
+    public function hasOrder()
+    {
+        return ! is_null($this->order);
     }
 
     /**
@@ -58,9 +42,10 @@ class QueryOrderBy
         return $this->orderBy;
     }
 
-    public function setOrderBy(string $orderBy)
+    public function setOrderBy($orderBy)
     {
         $this->orderBy = $orderBy;
+        return $this;
     }
 
     /**
@@ -72,14 +57,11 @@ class QueryOrderBy
     }
 
     /**
-     * @param string $orderByDirection
+     * @param mixed $order
      * @return static
      */
-    public function setOrder(string $order)
+    public function setOrder($order)
     {
-        if (! in_array($order, ['asc', 'desc'])) {
-            throw new \RuntimeException("order by operation: {$order} is not supported");
-        }
         $this->order = $order;
         return $this;
     }
