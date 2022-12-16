@@ -14,6 +14,7 @@ use Tusimo\Restable\QuerySeek;
 use Tusimo\Restable\QueryOrderBy;
 use Tusimo\Restable\QueryAggregate;
 use Tusimo\Restable\QueryPagination;
+use Tusimo\Restable\QueryCursorPagination;
 
 trait UriAble
 {
@@ -43,11 +44,13 @@ trait UriAble
                 $queries['order'] = $this->queryOrderBy->getOrder();
             }
         }
-        if ($this->hasQueryPagination()) {
-            if ($this->getQueryPagination()->hasPage()) {
+
+        if ($this->hasQueryCursorPagination()) {
+            $queries['cursor'] = $this->getQueryCursorPagination()->getCursor();
+            $queries['per_page'] = $this->getQueryCursorPagination()->getPerPage();
+        } else {
+            if ($this->hasQueryPagination()) {
                 $queries['page'] = $this->getQueryPagination()->getPage();
-            }
-            if ($this->getQueryPagination()->hasPerPage()) {
                 $queries['per_page'] = $this->getQueryPagination()->getPerPage();
             }
         }
@@ -89,24 +92,24 @@ trait UriAble
 
         if (isset($data['order_by']) || isset($data['order'])) {
             $queryOrderBy = new QueryOrderBy();
-            if (isset($data['order']) && $data['order'] !== '') {
-                $queryOrderBy->setOrder($data['order']);
-            }
-            if (isset($data['order_by']) && $data['order_by'] !== '') {
+            if (isset($data['order_by'])) {
                 $queryOrderBy->setOrderBy($data['order_by']);
+            }
+            if (isset($data['order'])) {
+                $queryOrderBy->setOrder($data['order']);
             }
             $query->setQueryOrderBy($queryOrderBy);
         }
-        if (isset($data['page']) || isset($data['per_page'])) {
-            $queryPagination = new QueryPagination();
-            if (isset($data['page']) && $data['page'] !== '') {
-                $queryPagination->setPage(intval($data['page']));
+        if (isset($data['cursor'])) {
+            $queryCursorPagination = new QueryCursorPagination(intval($data['cursor']), intval($data['per_page'] ?? 10));
+            $query->setQueryCursorPagination($queryCursorPagination);
+        } else {
+            if (isset($data['page'])) {
+                $queryPagination = new QueryPagination(intval($data['page']), intval($data['per_page'] ?? 10));
+                $query->setQueryPagination($queryPagination);
             }
-            if (isset($data['per_page']) && $data['per_page'] !== '') {
-                $queryPagination->setPerPage(intval($data['per_page']));
-            }
-            $query->setQueryPagination($queryPagination);
         }
+
         if (isset($data['offset']) || isset($data['limit'])) {
             $querySeek = new QuerySeek();
             if (isset($data['offset']) && $data['offset'] !== '') {
@@ -174,6 +177,7 @@ trait UriAble
             $parameters['order_by'],
             $parameters['order'],
             $parameters['page'],
+            $parameters['cursor'],
             $parameters['per_page'],
             $parameters['select'],
             $parameters['with'],

@@ -21,27 +21,7 @@ class QueryPagination
     }
 
     /**
-     * Check has page or not.
-     *
-     * @return bool
-     */
-    public function hasPage()
-    {
-        return ! is_null($this->page);
-    }
-
-    /**
-     * Check has PerPage or not.
-     *
-     * @return bool
-     */
-    public function hasPerPage()
-    {
-        return ! is_null($this->perPage);
-    }
-
-    /**
-     * @return null|int
+     * @return int
      */
     public function getPage()
     {
@@ -58,7 +38,7 @@ class QueryPagination
     }
 
     /**
-     * @return null|int
+     * @return int
      */
     public function getPerPage()
     {
