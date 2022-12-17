@@ -8,6 +8,8 @@ declare(strict_types=1);
  */
 namespace Tusimo\Restable\Concerns;
 
+use Tusimo\Restable\Query;
+
 trait CloneAble
 {
     public function __clone()
@@ -17,5 +19,18 @@ trait CloneAble
                 $this->{$key} = unserialize(serialize($val));
             }
         }
+    }
+
+    public function newQuery()
+    {
+        return (new Query())->setQuerySelect($this->getQuerySelect())
+            ->setQueryWith($this->getQueryWith())
+            ->setQuerySeek($this->getQuerySeek())
+            ->setQueryPagination($this->getQueryPagination())
+            ->setQueryCursorPagination($this->getQueryCursorPagination())
+            ->setQueryOrderBy($this->getQueryOrderBy())
+            ->setQueryAggregate($this->getQueryAggregate())
+            ->setQueryItems($this->getQueryItems())
+            ->setParameters($this->getParameters());
     }
 }
