@@ -21,16 +21,39 @@ trait CloneAble
         }
     }
 
+    /**
+     * @return Query
+     */
     public function newQuery()
     {
-        return (new Query())->setQuerySelect($this->getQuerySelect())
-            ->setQueryWith($this->getQueryWith())
-            ->setQuerySeek($this->getQuerySeek())
-            ->setQueryPagination($this->getQueryPagination())
-            ->setQueryCursorPagination($this->getQueryCursorPagination())
-            ->setQueryOrderBy($this->getQueryOrderBy())
-            ->setQueryAggregate($this->getQueryAggregate())
-            ->setQueryItems($this->getQueryItems())
-            ->setParameters($this->getParameters());
+        $query = new Query();
+        if ($this->getQuerySelect()) {
+            $query->setQuerySelect($this->getQuerySelect());
+        }
+        if ($this->getQueryWith()) {
+            $query->setQueryWith($this->getQueryWith());
+        }
+        if ($this->getQuerySeek()) {
+            $query->setQuerySeek($this->getQuerySeek());
+        }
+        if ($this->getQueryPagination()) {
+            $query->setQueryPagination($this->getQueryPagination());
+        }
+        if ($this->getQueryCursorPagination()) {
+            $query->setQueryCursorPagination($this->getQueryCursorPagination());
+        }
+        if ($this->getQueryOrderBy()) {
+            $query->setQueryOrderBy($this->getQueryOrderBy());
+        }
+        if ($this->getQueryAggregate()) {
+            $query->setQueryAggregate($this->getQueryAggregate());
+        }
+        if ($this->getQueryItems()) {
+            $query->setQueryItems($this->getQueryItems());
+        }
+        if ($this->getParameters()) {
+            $query->setParameters($this->getParameters());
+        }
+        return $query;
     }
 }
